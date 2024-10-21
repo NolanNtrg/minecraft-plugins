@@ -173,6 +173,81 @@ public class PlayerJoinListener implements Listener {
         }
     }
 
+    public void onAlchimisteClick(InventoryClickEvent event) {
+        if (event.getView().getTitle().equals("§4Choix du kit")) {
+            event.setCancelled(true);
+            Player player = (Player) event.getWhoClicked();
+            ItemStack item = event.getCurrentItem();
+            if (item != null && item.getType() == Material.IRON_SWORD && item.getItemMeta().getDisplayName().equals("§cGuerrier")) {
+                if (event.isLeftClick()) {
+                    event.setCancelled(true);
+                    player.closeInventory();
+                    player.getInventory().clear();
+
+                    ItemStack helmet = new ItemStack(Material.IRON_HELMET);
+                    ItemMeta helmetMeta = helmet.getItemMeta();
+                    if (helmetMeta != null) {
+                        helmetMeta.setUnbreakable(true);
+                        helmet.setItemMeta(helmetMeta);
+                    }
+
+                    ItemStack chestplate = new ItemStack(Material.IRON_CHESTPLATE);
+                    ItemMeta chestplateMeta = chestplate.getItemMeta();
+                    if (chestplateMeta != null) {
+                        chestplateMeta.setUnbreakable(true);
+                        chestplate.setItemMeta(chestplateMeta);
+                    }
+
+                    ItemStack leggings = new ItemStack(Material.IRON_LEGGINGS);
+                    ItemMeta leggingsMeta = leggings.getItemMeta();
+                    if (leggingsMeta != null) {
+                        leggingsMeta.setUnbreakable(true);
+                        leggings.setItemMeta(leggingsMeta);
+                    }
+
+                    ItemStack boots = new ItemStack(Material.IRON_BOOTS);
+                    ItemMeta bootsMeta = boots.getItemMeta();
+                    if (bootsMeta != null) {
+                        bootsMeta.setUnbreakable(true);
+                        boots.setItemMeta(bootsMeta);
+                    }
+
+                    ItemStack shield = new ItemStack(Material.SHIELD);
+                    ItemMeta shieldMeta = shield.getItemMeta();
+                    if (shieldMeta != null) {
+                        shieldMeta.setUnbreakable(true);
+                        shield.setItemMeta(shieldMeta);
+                    }
+
+                    ItemStack ironsword = new ItemStack(Material.IRON_SWORD);
+                    ItemMeta ironswordMeta = ironsword.getItemMeta();
+                    if (ironswordMeta != null) {
+                        ironswordMeta.setUnbreakable(true);
+                        ironsword.setItemMeta(ironswordMeta);
+                    }
+
+                    ItemStack gapple = new ItemStack(Material.GOLDEN_APPLE, 64);
+                    ItemStack steak = new ItemStack(Material.COOKED_BEEF, 64);
+
+                    player.getInventory().setHeldItemSlot(0);
+                    player.getInventory().setHelmet(helmet);
+                    player.getInventory().setChestplate(chestplate);
+                    player.getInventory().setLeggings(leggings);
+                    player.getInventory().setBoots(boots);
+                    player.getInventory().setItemInOffHand(shield);
+                    player.getInventory().setItem(0, ironsword);
+                    player.getInventory().setItem(1, gapple);
+                    player.getInventory().setItem(2, steak);
+
+                    Location location = new Location(player.getWorld(), 411, 84, 20);
+                    player.teleport(location);
+                    player.setGameMode(GameMode.SURVIVAL);
+                    player.closeInventory();
+                }
+            }
+        }
+    }
+
     public void onPlayerDeath(PlayerDeathEvent event) {
         event.getDrops().clear();
         String dead = event.getEntity().getDisplayName();
