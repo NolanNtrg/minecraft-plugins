@@ -1,0 +1,4 @@
+name: montrehub
+version: '1.0-SNAPSHOT'
+main: fr.xlan.montrehub.Montrehub
+api-version: '1.21'

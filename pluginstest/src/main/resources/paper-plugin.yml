@@ -1,0 +1,4 @@
+name: pluginstest
+version: '1.0-SNAPSHOT'
+main: fr.xlan.pluginstest.Pluginstest
+api-version: '1.21'

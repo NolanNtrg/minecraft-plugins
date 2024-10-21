@@ -1,0 +1,4 @@
+name: duelgestionjoueurs
+version: '1.0-SNAPSHOT'
+main: fr.xlan.duelgestionjoueurs.Duelgestionjoueurs
+api-version: '1.21'
